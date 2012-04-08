@@ -1,0 +1,104 @@
+Udacity's CS101 - Buildind a Search Engine Contest
+
+At the end of Udacity's (www.udacity.com) first instance of
+the CS101 course (ending in April 2012) the course staff
+issued a contest for all students to build on the ideas in the 
+CS101 class in a creative way. This is my entry to the contest.
+
+
+PREAMBLE
+
+
+During the seven weeks of the CS101 course, we built a basic 
+seach engine consisting of a web crawler, a lookup functionality
+and a ranking algorithm. The language used was Python 2.x.
+
+
+BACKGROUND
+
+
+One of the more challenging parts of the course was the 
+implementation of a ranking algorithm similar to PageRank. In this
+approach the ranking is determined from the linked structure of
+web document, that is, the rank is completely determined from a
+graph representing the web. This graph has as nodes the pages and
+as edges the links between pages.
+
+
+THE IDEA
+
+
+My contribution to this contest is a very simple set of functions 
+that take the graph representing the web and outpus a file in the
+DOT language (https://en.wikipedia.org/wiki/DOT_language). This file
+can be used by, for example, Graphviz (www.graphviz.org) to produce 
+an ilustrative image of the graph thus making easier to understand
+the results of the ranking algorithm.
+
+
+IMPLEMENTATION
+
+
+The code consists of only two files
+
+- search_engine.py : This file contains the final code from the course.
+Here is the web crawler, the ranking and lookup procedures. This file
+doesn't contain any original contribution by me.
+- graphviz.py : Here I define the procedures that take the results from
+the search engine and produce strings in appropiate format to be writen
+to a DOT file. Each node has its (abbreviated) url and its rank as the
+displayed name. Nodes vary in sizes according to their rank.
+
+To produce an actual image from the DOT file you will need to download
+the Graphviz package (www.graphviz.org) or something similar.
+
+
+USAGE
+
+
+Start a Python interpreted in the folder in which you have the code. Then
+import the graphviz.py functionalities.
+
+>>> from graphviz import *
+
+We have now loaded the toy-web example from the course and we have some
+variables defined: index, graph and ranks. With this we can produce a dot
+file of the complete web
+
+>>> write_dot_file("web.dot", graph, ranks)
+
+This will create the file web.dot which can be used by Graphviz to produce,
+for example, an svg image. To do that, from the console type
+
+$ dot -Tsvg web.dot -o web.svg
+
+You can now view the web.svg image, for example, in your web browser. There 
+is also another funtion that makes a lookup and produces a DOT file with a
+central node, which is the highest ranking result of the lookup, all the 
+nodes linking to and from this central node. For example, a lookup for
+"Kidnap"
+
+>>> write_dot_lookup("Kidnap_lookup.dot", index, ranks, "Kidnap", graph)
+
+and again, to produce the actual image, type from a console
+
+$ dot -Tsvg Kidnap_lookup.dot -o Kidnap_lookup.svg
+
+You could also try to crawl something different from the provided examples. The
+get_page procedure will try to fetch pages from the web, however this could 
+take a long time. There is a global variable crawl_depth (defaulted to 1) that
+specifies the number of links to be followed from the seed page. To crawl something
+else and make a query there
+
+>>> index2, graph2 = crawl_web("http://www.xkcd.com/")
+>>> ranks2 = compute_ranks(graph2)
+>>> write_dot_lookup("web_lookup.dot", index2, ranks2, "web", graph2)
+
+and use Graphviz as before to produce an image.
+
+
+TO DO
+
+
+For "big" webs the plots produced are terrible and there are some issues with the labeling
+of nodes, sometimes they are not abbreviated. 
