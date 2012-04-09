@@ -122,4 +122,4 @@ At the top of my head I can think of these improvements:
 - It would be nice to be able to produce a video of the evolution of the ranks as we iterate through the ranking algorithm
 - When one page has more than one link to another page, instead of having many arrows it would be better to have one single arrow but with a label indicating the number of links.
 - Make clusters of pages according to their domain. The clusters could even be colored differently.
-
+- Be able to lookup and produce graphs for more pages and not just the highest ranking one.
