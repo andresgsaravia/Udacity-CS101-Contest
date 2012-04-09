@@ -117,7 +117,9 @@ splitting and the crawling could be improved a lot.
 At the top of my head I can think of these improvements:
 - When there are a lot of nodes to be used in an image, remove the smaller ones to reduce cluttering.
 - Better split the strings to avoid including html tags in the index.
-- An easier way to produce the images. There is too much interaction with the interpreter.
+- An easier way to produce the images. There is too much interaction with the interpreter. Perhaps even a way to make everything from a web browser.
 - When making a lookup, make the node with the keyword have a different color.
 - It would be nice to be able to produce a video of the evolution of the ranks as we iterate through the ranking algorithm
 - When one page has more than one link to another page, instead of having many arrows it would be better to have one single arrow but with a label indicating the number of links.
+- Make clusters of pages according to their domain. The clusters could even be colored differently.
+
