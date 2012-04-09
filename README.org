@@ -70,7 +70,7 @@ This will create the file web.dot which can be used by Graphviz to produce,
 for example, an svg image. To do that, from the console type
 
 #+BEGIN_SRC shell
-dot -Tsvg web.dot -o web.svg
+  dot -Tsvg web.dot -o web.svg
 #+END_SRC
 
 You can now view the web.svg image, for example, in your web browser. There 
@@ -86,7 +86,7 @@ nodes linking to and from this central node. For example, a lookup for
 and again, to produce the actual image, type from a console
 
 #+BEGIN_SRC shell
-dot -Tsvg Kidnap_lookup.dot -o Kidnap_lookup.svg
+  dot -Tsvg Kidnap_lookup.dot -o Kidnap_lookup.svg
 #+END_SRC
 
 You could also try to crawl something different from the provided examples. The
@@ -115,9 +115,9 @@ are pages with many outgoing links that clutter the whole place. Also the string
 splitting and the crawling could be improved a lot.
 
 At the top of my head I can think of these improvements:
-- [ ] When there are a lot of nodes to be used in an image, remove the smaller ones to reduce cluttering.
-- [ ] Better split the strings to avoid including html tags in the index.
-- [ ] An easier way to produce the images. There is too much interaction with the interpreter.
-- [ ] When making a lookup, make the node with the keyword have a different color.
-- [ ] It would be nice to be able to produce a video of the evolution of the ranks as we iterate through the ranking algorithm
-- [ ] When one page has more than one link to another page, instead of having many arrows it would be better to have one single arrow but with a label indicating the number of links.
+- When there are a lot of nodes to be used in an image, remove the smaller ones to reduce cluttering.
+- Better split the strings to avoid including html tags in the index.
+- An easier way to produce the images. There is too much interaction with the interpreter.
+- When making a lookup, make the node with the keyword have a different color.
+- It would be nice to be able to produce a video of the evolution of the ranks as we iterate through the ranking algorithm
+- When one page has more than one link to another page, instead of having many arrows it would be better to have one single arrow but with a label indicating the number of links.
