@@ -6,16 +6,14 @@ issued a contest for all students to build on the ideas in the
 CS101 class in a creative way. This is my entry to the contest.
 
 
-PREAMBLE
-
+* Preamble
 
 During the seven weeks of the CS101 course, we built a basic 
 seach engine consisting of a web crawler, a lookup functionality
 and a ranking algorithm. The language used was Python 2.x.
 
 
-BACKGROUND
-
+* Background
 
 One of the more challenging parts of the course was the 
 implementation of a ranking algorithm similar to PageRank. In this
@@ -25,8 +23,7 @@ graph representing the web. This graph has as nodes the pages and
 as edges the links between pages.
 
 
-THE IDEA
-
+* The Idea
 
 My contribution to this contest is a very simple set of functions 
 that take the graph representing the web and outpus a file in the
@@ -36,8 +33,7 @@ an ilustrative image of the graph thus making easier to understand
 the results of the ranking algorithm.
 
 
-IMPLEMENTATION
-
+* Implementation
 
 The code consists of only two files
 
@@ -53,8 +49,7 @@ To produce an actual image from the DOT file you will need to download
 the Graphviz package (www.graphviz.org) or something similar.
 
 
-USAGE
-
+* Usage
 
 Start a Python interpreted in the folder in which you have the code. Then
 import the graphviz.py functionalities.
@@ -92,13 +87,25 @@ else and make a query there
 
 >>> index2, graph2 = crawl_web("http://www.xkcd.com/")
 >>> ranks2 = compute_ranks(graph2)
->>> write_dot_lookup("web_lookup.dot", index2, ranks2, "web", graph2)
+>>> write_dot_lookup("student.dot", index2, ranks2, "student", graph2)
 
-and use Graphviz as before to produce an image.
+and use Graphviz as before to produce an image. However, due to several limitation
+in the crawling, the string splitting and glitches with my graphviz procedures the
+images produced from "real world" pages are still terrible.
 
 
-TO DO
+* To Do
 
+I see several things that can be improved in all the areas and I've been playing
+around with this code only for a couple of days, so surely many more will arise. One 
+of the most obvious problem is when trying to make an image of a "big" web; there 
+are pages with many outgoing links that clutter the whole place. Also the string
+splitting and the crawling could be improved a lot.
 
-For "big" webs the plots produced are terrible and there are some issues with the labeling
-of nodes, sometimes they are not abbreviated. 
+At the top of my head I can think of these improvements:
+- [ ] When there are a lot of nodes to be used in an image, remove the smaller ones to reduce cluttering.
+- [ ] Better split the strings to avoid including html tags in the index.
+- [ ] An easier way to produce the images. There is too much interaction with the interpreter.
+- [ ] When making a lookup, make the node with the keyword have a different color.
+- [ ] It would be nice to be able to produce a video of the evolution of the ranks as we iterate through the ranking algorithm
+- [ ] When one page has more than one link to another page, instead of having many arrows it would be better to have one single arrow but with a label indicating the number of links.

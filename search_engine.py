@@ -5,6 +5,7 @@
 
 # Number of links to be followed from the seed page 
 crawl_depth = 1
+split_list = " ,!-<>"
 
 def compute_ranks(graph):
     d = 0.8 # damping factor
@@ -200,8 +201,21 @@ def union(a, b):
         if e not in a:
             a.append(e)
 
+def split_string(source, splitlist = split_list):
+    output = []
+    atsplit = True
+    for char in source:
+        if char in splitlist:
+            atsplit = True
+        elif atsplit:
+            output.append(char)
+            atsplit = False
+        else:
+            output[-1] += char
+    return output
+
 def add_page_to_index(index, url, content):
-    words = content.split()
+    words = split_string(content)
     for word in words:
         add_to_index(index, word, url)
         

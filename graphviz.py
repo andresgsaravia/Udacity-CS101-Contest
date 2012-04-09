@@ -9,7 +9,7 @@ from search_engine import *
 
 # How many letter will have the printed link in each node
 name_length = 33
-
+font_size_multiplier = 20 # increse / decrease to have bigger/smaller fonts and arrows
 
 def biggest_rank(ranks):
     big = 0.0
@@ -18,20 +18,14 @@ def biggest_rank(ranks):
             big = ranks[entry]
     return big
 
-
-font_size_multiplier = 10 # increse / decrease to have bigger/smaller fonts and arrows
-
-
 def node_name(string):
     return '"' + string + '"'
-
 
 def node_label(string):
     if len(string) > name_length:
         return string[:(name_length - 3) / 2] + '...' + string [-(name_length - 3) / 2:]
     else:
         return string
-
 
 def node_dot(node, ranks):
     result = node_name(node) 
@@ -41,7 +35,6 @@ def node_dot(node, ranks):
     result += ', URL=' + node_name(node) 
     result += '];'
     return result
-
 
 def edge_dot(source, target, ranks, name = ''):
     sr = node_name(source)
@@ -55,13 +48,11 @@ def edge_dot(source, target, ranks, name = ''):
     dot_string += '];'
     return dot_string
 
-
 def all_nodes_dot(graph, ranks):
     dot_string = ''
     for node in graph:
         dot_string += node_dot(node, ranks) + '\n'
     return dot_string
-
 
 def all_edges_dot(graph, ranks):
     dot_string = ''
@@ -69,7 +60,6 @@ def all_edges_dot(graph, ranks):
         for target in graph[source]:
             dot_string += edge_dot(source, target, ranks) + '\n'
     return dot_string
-
 
 def graph_dot(graph, ranks):
     dot_string = 'digraph G {\n'
@@ -91,12 +81,10 @@ def lookup_graph(index, ranks, keyword, graph):
             result_graph[page] = []
     return result_graph
     
-
 def write_dot_file(filename, graph, ranks):
     f = open(filename, "w")
     f.write(graph_dot(graph, ranks))
     f.close()
-
 
 def write_dot_lookup(filename, index, ranks, keyword, graph):
     g = lookup_graph(index, ranks, keyword, graph)
